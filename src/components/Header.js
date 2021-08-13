@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function Header () {
-  return(
-    <header>
-      I am the header
-    </header>
-  )
+class Header extends Component {
+  render() {
+
+    return(
+      <header>
+        I am the header
+      </header>
+    )
+  }
 }
 
 export default Header;
