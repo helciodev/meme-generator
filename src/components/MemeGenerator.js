@@ -11,6 +11,7 @@ class MemeGenerator extends Component {
       allMemeImgs: '',
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleGenerate = this.handleGenerate.bind(this)
   }
 
   componentDidMount() {
@@ -32,6 +33,15 @@ class MemeGenerator extends Component {
         [name]: value
       })
     }
+
+  handleGenerate(event) {
+    event.preventDefault()
+    const generatedRandomImg = this.state.allMemeImgs[Math.ceil(Math.random() * 100 + 1)].url
+    this.setState({
+      randomImage: generatedRandomImg
+    })
+    
+  }
 
   render() {
 
@@ -57,8 +67,13 @@ class MemeGenerator extends Component {
         onChange={this.handleChange} />
         </label>
      
-      <button>Generate meme</button>
+      <button onClick={this.handleGenerate}>Generate meme</button>
       </form>
+      <div className="meme">
+        <img src={this.state.randomImage} alt=""/>
+        <h2 className="top">{this.state.topText}</h2>
+        <h2 className="bottom">{this.state.bottomText}</h2>
+      </div>
       </>
     )
   }
